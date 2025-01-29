@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤍🤍🤍🤍🤍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Comfortaa:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comfortaa', cursive;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Halaman Pertama */
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-size: 1.1em;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Halaman Kedua */
+        .main-content {
+            display: none;
+            padding: 40px 20px;
+            color: white;
+            text-align: center;
+            background: url('./assets/images/bg.png') no-repeat center center/cover;
+            min-height: 100vh;
+        }
+
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px auto;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes rotateClockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: rotateClockwise 23s linear infinite;
+}
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            color: #2c3e50;
+        }
+        .countdown {
+    background: rgba(1, 1, 1, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.countdown h3 {
+    color: #ffff;
+    margin-bottom: 10px;
+}
+
+#countdownTimer {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+        .anniversary-date {
+            font-size: 0.8em;
+            color: var(--primary-color);
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .love-message {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 20px 0;
+            text-align: justify;
+        }
+
+  #hearts {
+    position: fixed; /* Menggunakan fixed agar elemen tetap di posisi yang sama saat scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Menjaga elemen hati tidak mengganggu interaksi pengguna */
+    z-index: 9999; /* Agar hati muncul di atas elemen lainnya */
+}
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: #ff69b4;
+    animation: fall 5s linear infinite, drift 5s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        top: -50px;
+    }
+    100% {
+        top: 100%; /* Agar elemen bergerak turun hingga ke bawah layar */
+    }
+}
+
+@keyframes drift {
+    0% {
+        left: 50%;
+    }
+    100% {
+        left: calc(50% + 50px * (random() - 0.5)); /* Acak kiri dan kanan */
+    }
+}
+
+
+        /* Tambahan Animasi */
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Halaman Pertama -->
+    <div class="login-container">
+        <div class="login-box fade-in">
+            <h1>Siapa Kamu!?</h1>
+            <input type="text" placeholder="Masukkan nama kamu..." id="nameInput">
+            <button onclick="checkName()">Masuk</button>
+            <p id="errorMsg" style="color: red; margin-top: 10px; display: none;">ini bukan untukmu</p>
+        </div>
+    </div>
+
+   <!-- Halaman Kedua -->
+    <div class="main-content">
+        <!-- Audio Player -->
+        <audio id="bgMusic" loop>
+            <source src="./assets/audio/audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+       <div id="hearts"></div>
+        
+        <div class="photo-frame fade-in">
+            <img src="./assets/images/zizah.jpg" alt="Azizah">
+        </div>
+
+        <div class="message-box fade-in">
+            <h2 style="color: var(--primary-color); margin-bottom: 15px;">💚 💚 💚</h2>
+            <div class="anniversary-date">
+                📅 02 Maret 2024 - 02 Maret 2025 📅
+            </div>
+            <div class="love-message">
+                <p>zizah tersayang...</p>
+                <p>Selamat ulang tahun pertama hubungan kita! 🌟 Sudah 365 hari kita bersama melewati suka dan duka. Terima kasih banyak buat semua dukungan yang selalu kamu berikan.</p>
+                <p>Kamu adalah...</p>
+                <ul style="margin: 15px 0; list-style: none;">
+                    <li>🙆🏻‍♀️ Bukti cinta yg tulus</li>
+                    <li>🌷Hal terbaik di hidupku</li>
+                    <li>✨ Penyemangat ku ✨</li>
+                </ul>
+                <p>Aku bersyukur bisa menemukan seseorang sepertimu. Mari terus tumbuh bersama dan buat lebih banyak kenangan indah🫂</p>
+                <p style="text-align: center; margin-top: 20px; font-weight: bold;">Aku sayang kamu lebih dari apapun💚</p>
+            </div>
+        </div>
+
+        <div class="countdown fade-in" style="margin: 30px 0;">
+            <h3>Waktu bersama kita:</h3>
+            <div id="countdownTimer" style="font-size: 1.5em;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Validasi Nama
+        const validNames = ['gusti azizah', 'azizah', 'zizahh', 'zizah', 'aziza', 'gusti', 'ziza', 'jie', 'panji'];
+        
+        function checkName() {
+            const name = document.getElementById('nameInput').value.toLowerCase();
+            const errorMsg = document.getElementById('errorMsg');
+            
+            if(validNames.some(valid => name.includes(valid))) {
+                document.querySelector('.login-container').style.display = 'none';
+                document.querySelector('.main-content').style.display = 'block';
+                createHearts();
+                startCountdown();
+            } else {
+                errorMsg.style.display = 'block';
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 2000);
+            }
+        }
+
+// Animasi Hati
+function createHearts() {
+    const heartsContainer = document.getElementById('hearts');
+    for (let i = 0; i < 4; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '☁️';
+        heart.style.left = Math.random() * 140 + '%';
+        heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+        heart.style.animationDelay = Math.random() * 10 + 's';
+        heartsContainer.appendChild(heart);
+    }
+}
+
+// Panggil fungsi untuk mulai animasi
+createHearts();
+
+        // Hitung Mundur// Hitung Berapa Hari Sudah Bersama
+function startCountdown() {
+    const startDate = new Date('March 2, 2024 00:00:00').getTime();
+    
+    setInterval(() => {
+        const now = new Date().getTime();
+        const distance = now - startDate; // Menghitung dari tanggal mulai hingga sekarang
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById('countdownTimer').innerHTML = 
+            `${days} Hari ${hours} Jam ${minutes} Menit`;
+    }, 1000);
+}
+
+        // Efek Ketik
+        window.onload = function() {
+            document.getElementById('nameInput').focus();
+        }
+        // Play Music
+       function checkName() {
+    const name = document.getElementById('nameInput').value.toLowerCase();
+    const errorMsg = document.getElementById('errorMsg');
+    
+    if(validNames.some(valid => name.includes(valid))) {
+        document.querySelector('.login-container').style.display = 'none';
+        document.querySelector('.main-content').style.display = 'block';
+        createHearts();
+        startCountdown();
+        
+        const audio = document.getElementById('bgMusic');
+        audio.volume = 0.3;
+        audio.play().catch(error => console.log("Autoplay tidak diizinkan:", error));
+        
+    } else {
+        errorMsg.style.display = 'block';
+        setTimeout(() => {
+            errorMsg.style.display = 'none';
+        }, 2000);
+    }
+  }
+   </script>
+  </body>
+ </html>
+    
